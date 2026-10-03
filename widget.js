@@ -2,6 +2,19 @@
   console.log("[ask-webring] скрипт загружен");
   var DATA_URL = "https://plida.github.io/ask-webring/members.json";
 
+  function el(tag, attrs, text) {
+    var node = document.createElement(tag);
+    if (attrs) {
+      for (var key in attrs) {
+        node.setAttribute(key, attrs[key]);
+      }
+    }
+    if (text != null) {
+      node.textContent = text;
+    }
+    return node;
+  }
+  
   function getMembers(ring) {
     var all = ring.members || [];
     var usable = all.filter(function (m) {
@@ -42,7 +55,27 @@
   
     return { prev: prev, next: next, rand: rand };
   }
+
+  function render(mount, ring, members, idx) {
+    mount.innerHTML = "";
+    mount.classList.add("webring");
   
+    if (idx === -1) {
+      mount.appendChild(el("a", { href: ring.listUrl || "#" }, ring.name || "web ring"));
+      return;
+    }
+  
+    var neighbors = getNeighbors(members, idx);
+  
+    mount.appendChild(el("a", { href: neighbors.prev.url, rel: "prev" }, "← " + neighbors.prev.name));
+    mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
+    mount.appendChild(el("a", { href: ring.listUrl || "#" }, ring.name || "list"));
+    mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
+    mount.appendChild(el("a", { href: neighbors.next.url, rel: "next" }, neighbors.next.name + " →"));
+    mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
+    mount.appendChild(el("a", { href: neighbors.rand.url }, "random"));
+  }
+    
   let mount = document.getElementById("webring");
   if (mount) {
     console.log("[ask-webring] найден элемент:", mount);
@@ -64,6 +97,7 @@
     } else {
       console.log("[ask-webring] сайт #" + idx + ":", members[idx].name);
       getNeighbors(members, idx);
+      render(mount, ring, members, idx);
     }
   })
   .catch(function (err) {

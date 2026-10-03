@@ -14,7 +14,7 @@
   function normalize(url) {
     try {
       var u = new URL(url);
-      return (u.origin + u.pathname).replace(/\/+$/, "").toLowerCase();
+      return u.origin.toLowerCase();
     } catch (e) {
       return String(url || "").replace(/\/+$/, "").toLowerCase();
     }

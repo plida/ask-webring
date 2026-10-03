@@ -28,6 +28,20 @@
       return normalize(m.url) === hereOrigin;
     });
   }
+
+  function getNeighbors(members, idx) {
+    var n = members.length;
+  
+    var prev = members[(idx - 1 + n) % n];
+    var next = members[(idx + 1) % n];
+    var rand = members[Math.floor(Math.random() * n)];
+  
+    console.log("[ask-webring] prev:", prev.name, prev.url);
+    console.log("[ask-webring] next:", next.name, next.url);
+    console.log("[ask-webring] random:", rand.name, rand.url);
+  
+    return { prev: prev, next: next, rand: rand };
+  }
   
   let mount = document.getElementById("webring");
   if (mount) {
@@ -47,6 +61,7 @@
 
     if (idx === -1) {
       console.log("[ask-webring] сайт не в кольце");
+      getNeighbors(members, idx);
     } else {
       console.log("[ask-webring] сайт #" + idx + ":", members[idx].name);
     }

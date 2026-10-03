@@ -1,2 +1,49 @@
-<div id="webring"></div>
-<script src="widget.js" defer></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Веб-кольцо асков</title>
+</head>
+<body>
+  <h1 id="ring-name">Веб-кольцо асков</h1>
+  <p id="ring-description"></p>
+
+  <ul id="member-list"></ul>
+
+  <div id="webring"></div>
+  <script src="widget.js" defer></script>
+
+  <script>
+    fetch("members.json")
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (ring) {
+        document.getElementById("ring-name").textContent = ring.name || "Web Ring";
+        document.getElementById("ring-description").textContent = ring.description || "";
+
+        var list = document.getElementById("member-list");
+        (ring.members || [])
+          .filter(function (m) {
+            return m && m.url && m.active !== false;
+          })
+          .forEach(function (m) {
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = m.url;
+            a.textContent = m.name;
+            li.appendChild(a);
+            if (m.description) {
+              li.appendChild(document.createTextNode(" - " + m.description));
+            }
+            list.appendChild(li);
+          });
+      })
+      .catch(function (err) {
+        console.warn("[ask-webring] ошибка:", err);
+      });
+  </script>
+</body>
+</html>

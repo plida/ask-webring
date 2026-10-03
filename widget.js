@@ -20,7 +20,6 @@
     var usable = all.filter(function (m) {
       return m && m.url && m.active !== false;
     });
-    console.log("[ask-webring] активные участники:", usable);
     return usable;
   }
 
@@ -35,7 +34,6 @@
 
   function findCurrentIndex(members) {
     var hereOrigin = normalize(location.origin);
-    console.log("[ask-webring] hereOrigin:", hereOrigin);
   
     return members.findIndex(function (m) {
       return normalize(m.url) === hereOrigin;
@@ -48,10 +46,6 @@
     var prev = members[(idx - 1 + n) % n];
     var next = members[(idx + 1) % n];
     var rand = members[Math.floor(Math.random() * n)];
-  
-    console.log("[ask-webring] prev:", prev.name, prev.url);
-    console.log("[ask-webring] next:", next.name, next.url);
-    console.log("[ask-webring] random:", rand.name, rand.url);
   
     return { prev: prev, next: next, rand: rand };
   }
@@ -73,14 +67,12 @@
     mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
     mount.appendChild(el("a", { href: neighbors.next.url, rel: "next" }, neighbors.next.name + " →"));
     mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
-    mount.appendChild(el("a", { href: neighbors.rand.url }, "random"));
+    mount.appendChild(el("a", { href: neighbors.rand.url }, "случайно"));
   }
     
   let mount = document.getElementById("webring");
-  if (mount) {
-    console.log("[ask-webring] найден элемент:", mount);
-  } else {
-    console.log("[ask-webring] нет элемента #webring на странице");
+  if (!mount) {
+    console.warn("[ask-webring] нет элемента #webring на странице");
     return;
   }
   fetch(DATA_URL)
@@ -93,9 +85,8 @@
     var idx = findCurrentIndex(members);
 
     if (idx === -1) {
-      console.log("[ask-webring] сайт не в кольце");
+      console.warn("[ask-webring] сайт не в кольце");
     } else {
-      console.log("[ask-webring] сайт #" + idx + ":", members[idx].name);
       getNeighbors(members, idx);
       render(mount, ring, members, idx);
     }

@@ -1,0 +1,26 @@
+{
+  "name": "Аски",
+  "description": "Веб-кольцо для асков",
+  "listUrl": "https://ring.asksettingscubed.com/",
+  "updated": "2026-10-03",
+  "members": [
+    {
+      "id": "asksettingscubed",
+      "name": "Ask Settings Cubed",
+      "url": "https://asksettingscubed.ru/",
+      "admin": "Крестьянова Елизавета",
+      "description": "Аск для блоковых игр",
+      "joined": "2026-10-03",
+      "active": true
+    },
+    {
+      "id": "askmineverse",
+      "name": "Ask Minecraft Universe",
+      "url": "https://mc.askmineverse.ru/",
+      "admin": "Крестьянова Елизавета",
+      "description": "Аск для OC & Canon персонажей Minecraft",
+      "joined": "2026-10-03",
+      "active": true
+    },
+  ]
+}

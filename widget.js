@@ -61,9 +61,9 @@
 
     if (idx === -1) {
       console.log("[ask-webring] сайт не в кольце");
-      getNeighbors(members, idx);
     } else {
       console.log("[ask-webring] сайт #" + idx + ":", members[idx].name);
+      getNeighbors(members, idx);
     }
   })
   .catch(function (err) {

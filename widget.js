@@ -61,11 +61,11 @@
   
     var neighbors = getNeighbors(members, idx);
   
-    mount.appendChild(el("a", { href: neighbors.prev.url, rel: "prev" }, "← " + "prev"));
+    mount.appendChild(el("a", { href: neighbors.prev.url, rel: "prev" }, "← " + "[пред]"));
     mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
     mount.appendChild(el("a", { href: ring.listUrl || "#" }, ring.name || "list"));
     mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
-    mount.appendChild(el("a", { href: neighbors.next.url, rel: "next" }, "next" + " →"));
+    mount.appendChild(el("a", { href: neighbors.next.url, rel: "next" }, "[след]" + " →"));
     mount.appendChild(el("span", { class: "webring-sep", "aria-hidden": "true" }, " · "));
     mount.appendChild(el("a", { href: neighbors.rand.url }, "случайно"));
   }

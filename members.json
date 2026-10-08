@@ -22,11 +22,27 @@
     },
     {
       "id": "officeask",
-      "name": "Aurum Sanctum Bank OC & Fandom ",
+      "name": "Aurum Sanctum Bank OC & Fandom",
       "url": "https://timofeeva166.github.io/ASB-site/",
       "admin": "Zérø R",
       "joined": "2026-10-08",
-      "active": true
+      "active": false
+    },
+    {
+      "id": "providence",
+      "name": "PROVIDENCE Archiv der Republik Ägide",
+      "url": "https://bchchchch.github.io/providence/",
+      "admin": "Игорь Бачачев-Нокияприколович",
+      "joined": "2026-10-08",
+      "active": false
+    },
+    {
+      "id": "stardewvalleyoc",
+      "name": "Stardew Valley OC",
+      "url": "https://bchchchch.github.io/svoc-characters/",
+      "admin": "Игорь Бачачев-Нокияприколович",
+      "joined": "2026-10-08",
+      "active": false
     }
   ]
 }

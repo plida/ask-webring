@@ -9,7 +9,6 @@
       "name": "Ask Settings Cubed",
       "url": "https://asksettingscubed.ru/",
       "admin": "Крестьянова Елизавета",
-      "description": "Аск для блоковых игр",
       "joined": "2026-10-03",
       "active": true
     },
@@ -18,17 +17,15 @@
       "name": "Ask Minecraft Universe",
       "url": "https://askmineverse.ru/",
       "admin": "Крестьянова Елизавета",
-      "description": "Аск для OC & Canon персонажей Minecraft",
       "joined": "2026-10-03",
       "active": true
     },
     {
-      "id": "dummy",
-      "name": "dummy for testing",
-      "url": "https://plida.github.io/ask-webring/index.html",
-      "admin": "Крестьянова Елизавета",
-      "description": "Для тестирования",
-      "joined": "2026-10-03",
+      "id": "officeask",
+      "name": "Aurum Sanctum Bank OC & Fandom ",
+      "url": "https://timofeeva166.github.io/ASB-site/",
+      "admin": "Zérø R",
+      "joined": "2026-10-08",
       "active": true
     }
   ]
